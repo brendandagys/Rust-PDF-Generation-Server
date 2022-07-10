@@ -1,0 +1,9 @@
+version: "3.9"
+
+services:
+  rust:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./pdf_files:/pdf_files

@@ -1,7 +1,6 @@
 use sailfish::TemplateOnce;
 use std::collections::HashMap;
-
-struct Address(String);
+use wkhtmltopdf::PdfApplication;
 
 enum ECurrencyCode {
     CAD,
@@ -74,6 +73,8 @@ struct Parameters<'a> {
 fn main() {
     println!("Beginning HTML generation...");
 
+    let save_location = "/pdf_files/invoice-42069.pdf";
+
     let pdf_invoice_line_1 = PdfInvoiceLine {
         name: String::from("Advertising"),
         description: String::from("Advertising on Kijiji."),
@@ -117,9 +118,11 @@ fn main() {
     taxes.insert("HST", tax_data_1);
     taxes.insert("GST", tax_data_2);
 
-    let Address(address) = Address(String::from(
-        "35 Alpine Ridge Road, Denver, Colorado, 14933",
-    ));
+    let address = "Florida Man".to_owned()
+        + "<br>35 Coast Ridge Road"
+        + "<br>Palm Coast, Florida"
+        + "<br>42069"
+        + "<br>United States";
 
     let parameters = Parameters {
         address,
@@ -141,5 +144,23 @@ fn main() {
 
     let ctx = parameters;
 
-    println!("{}", ctx.render_once().unwrap());
+    // println!("{}", ctx.render_once().unwrap());
+    let html = ctx.render_once().unwrap();
+
+    println!("Creating PDF document from HTML content...");
+
+    let pdf_app = PdfApplication::new().expect("Failed to initialize PDF application!");
+
+    let mut pdfout = pdf_app
+        .builder()
+        .build_from_html(&html)
+        .expect("Failed to build PDF document!");
+
+    println!("PDF document generated. Saving file...");
+
+    pdfout
+        .save(save_location)
+        .expect("Failed to save PDF file!");
+
+    println!("PDF file saved!")
 }
