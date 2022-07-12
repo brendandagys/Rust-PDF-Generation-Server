@@ -72,7 +72,7 @@
           <td valign="top" style="vertical-align:top; text-align: right;">
             <span class="header">Amount Due (<%= currency_code %>)</span><br>
             <span style="font-size: 24px;">
-              <%= due.formatted() %>
+              <%= due %>
             </span>
           </td>
         </tr>
@@ -100,7 +100,7 @@
               </td>
               <td valign="top"
                 style="vertical-align:top; border-bottom: 1px solid lightgrey;">
-                <%= line.unit_cost.formatted() %><br>
+                <%= line.unit_cost %><br>
                   <% for tax in &line.taxes { %>
                     <small>+<%= tax %></small>
                     <% } %>
@@ -111,7 +111,7 @@
               </td>
               <td valign="top"
                 style="vertical-align:top; border-bottom: 1px solid lightgrey; text-align: right;">
-                <%= line.total.formatted() %>
+                <%= line.total %>
               </td>
             </tr>
             <% } %>
@@ -126,19 +126,19 @@
                 <td></td>
                 <td colspan="2">Subtotal</td>
                 <td valign="top" style="vertical-align:top; text-align: right;">
-                  <%= subtotal.formatted() %>
+                  <%= subtotal %>
                 </td>
               </tr>
-              <% for (&tax_name, _struct_value) in &taxes { %>
+              <% for (tax_name, _struct_value) in &taxes { %>
                 <tr>
                   <td></td>
                   <td colspan="2" style="border-bottom: 1px solid lightgrey;">
                     <%= tax_name %>
-                      (<%= taxes.get(&tax_name).unwrap().percent %>%)
+                      (<%= taxes.get(tax_name).unwrap().percent %>%)
                   </td>
                   <td valign="top"
                     style="vertical-align:top; text-align: right; border-bottom: 1px solid lightgrey;">
-                    <%= taxes.get(&tax_name).unwrap().total.formatted() %>
+                    <%= taxes.get(tax_name).unwrap().total %>
                   </td>
                 </tr>
                 <% } %>
@@ -147,7 +147,7 @@
                     <td colspan="2">Total</td>
                     <td valign="top"
                       style="vertical-align:top; text-align: right;">
-                      <%= total.formatted() %>
+                      <%= total %>
                     </td>
                   </tr>
                   <tr>
@@ -157,7 +157,7 @@
                     </td>
                     <td valign="top"
                       style="vertical-align:top; text-align: right; border-bottom: 5px double lightgrey;">
-                      <%= paid_amount.formatted() %>
+                      <%= paid_amount %>
                     </td>
                   </tr>
                   <tr>
@@ -165,7 +165,7 @@
                     <td colspan="2">Amount Due (<%= currency_code %>)</td>
                     <td valign="top"
                       style="vertical-align:top; text-align: right;">
-                      <%= due.formatted() %>
+                      <%= due %>
                     </td>
                   </tr>
         </tbody>

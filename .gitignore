@@ -1,6 +1,4 @@
-/target
 *.env
-invoice-template.html
+/target
 pdf_files/
 .DS_STORE
-Dockerfile.test

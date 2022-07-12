@@ -1,7 +1,8 @@
-use super::currency_value::CurrencyValue;
+use serde::Deserialize;
 
+#[derive(Deserialize)]
 pub struct TaxData {
     pub rate: f32,
     pub percent: f32,
-    pub total: CurrencyValue,
+    pub total: String,
 }
