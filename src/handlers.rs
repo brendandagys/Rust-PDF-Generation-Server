@@ -1,6 +1,13 @@
 use crate::{types::parameters::Parameters, PdfApp};
 use actix_web::{web, HttpResponse, Responder};
+use chrono::{DateTime, Utc};
 use sailfish::TemplateOnce;
+
+fn print_time(suffix: &str) -> DateTime<Utc> {
+    let now = Utc::now();
+    println!("{} {} {suffix} ", now.date(), now.time());
+    now
+}
 
 pub async fn health() -> impl Responder {
     HttpResponse::Ok().body("Server running!")
@@ -10,32 +17,40 @@ pub async fn create_invoice_pdf(
     data: web::Json<Parameters>,
     pdf_application: web::Data<PdfApp>,
 ) -> impl Responder {
-    println!("Parsed JSON.");
+    print_time(&format!(
+        "Received request for invoice {}",
+        data.invoice_number
+    ));
+    print_time("Parsed JSON");
 
     let save_location = format!("/pdf_files/invoice-{}.pdf", data.invoice_number);
 
-    println!("Rendering HTML template with data...");
+    print_time("Rendering HTML template with data...");
     let html = data
         .into_inner()
         .render_once()
         .expect("Failed to render provided data!");
-    println!("Rendered HTML template.");
+    print_time("Rendered HTML template");
 
-    println!("Building PDF document...");
+    print_time("Building PDF document...");
     let mut pdfout = pdf_application
         .instance
         .builder()
         .build_from_html(html)
         .expect("Failed to build PDF document!");
-    println!("PDF document generated.");
+    print_time("PDF document generated");
 
-    println!("Saving document...");
+    print_time("Saving document...");
     match pdfout.save(save_location) {
         Ok(_file) => {
             println!("PDF file saved!");
+
+            let now = Utc::now();
+            let response = format!("{} {}", now.date(), now.time());
+
             HttpResponse::Ok()
                 .content_type("text/html; charset=utf-8")
-                .body("Invoice PDF created!")
+                .body(response)
         }
         Err(_) => HttpResponse::InternalServerError().finish(),
     }
