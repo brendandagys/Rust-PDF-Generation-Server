@@ -1,7 +1,7 @@
 use serde::Deserialize;
 
 #[derive(Deserialize)]
-pub struct PdfInvoiceLine {
+pub struct InvoiceLine {
     pub name: String,
     pub description: String,
     pub quantity: u32,

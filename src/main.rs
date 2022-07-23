@@ -17,11 +17,20 @@ async fn main() -> actix_web::Result<()> {
             .app_data(web::Data::new(PdfApp {
                 instance: pdf_application,
             }))
-            .service(web::resource("/").guard(guard::Get()).to(handlers::health))
+            .route("/health", web::get().to(handlers::health))
             .service(
-                web::resource("/invoice")
-                    .guard(guard::Post())
-                    .to(handlers::create_invoice_pdf),
+                web::resource("/invoice").name("invoice-pdf").route(
+                    web::route()
+                        .guard(guard::Post())
+                        .to(handlers::create_invoice_pdf),
+                ),
+            )
+            .service(
+                web::resource("/credit-note").name("credit-note-pdf").route(
+                    web::route()
+                        .guard(guard::Post())
+                        .to(handlers::create_credit_note_pdf),
+                ),
             )
     })
     .workers(1);
