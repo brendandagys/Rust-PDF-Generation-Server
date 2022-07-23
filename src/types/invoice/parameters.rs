@@ -1,4 +1,4 @@
-use super::{pdf_invoice_line::PdfInvoiceLine, tax_data::TaxData};
+use super::{invoice_line::InvoiceLine, tax_data::TaxData};
 use sailfish::TemplateOnce;
 use serde::Deserialize;
 use std::collections::HashMap;
@@ -13,7 +13,7 @@ pub struct Parameters {
     pub invoice_number: String,
     pub reference_number: Option<String>,
     pub subtotal: String,
-    pub lines: Vec<PdfInvoiceLine>,
+    pub lines: Vec<InvoiceLine>,
     pub taxes: HashMap<String, TaxData>,
     pub total: String,
     pub paid_amount: String,
