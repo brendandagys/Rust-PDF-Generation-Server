@@ -1,5 +1,5 @@
 use crate::{
-    helpers::print_time,
+    helpers::{build_pdf, populate_html, print_time},
     types::{credit_note, invoice},
     PdfApp,
 };
@@ -48,7 +48,7 @@ where
     let save_location = format!("/pdf_files/{document_type_kebab_case}-{id}.pdf");
 
     print_time("Rendering HTML template with data...");
-    let html = match data.render_once() {
+    let html = match populate_html(data) {
         Ok(html) => html,
         Err(e) => {
             return HttpResponse::InternalServerError()
@@ -58,7 +58,7 @@ where
     print_time("Rendered HTML template");
 
     print_time("Building PDF document...");
-    let mut pdfout = match pdf_application.instance.builder().build_from_html(html) {
+    let mut pdfout = match build_pdf(pdf_application, &html) {
         Ok(pdfout) => pdfout,
         Err(e) => {
             return HttpResponse::InternalServerError()
@@ -73,11 +73,10 @@ where
             println!("PDF file saved!");
 
             let now = Utc::now();
-            let response = format!("{} {}", now.date(), now.time());
 
             HttpResponse::Ok()
                 .content_type("text/html; charset=utf-8")
-                .body(response)
+                .body(format!("{} {}", now.date(), now.time()))
         }
         Err(e) => HttpResponse::InternalServerError()
             .body(format!("Failed to save the generated PDF document: {e}")),
