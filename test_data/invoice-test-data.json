@@ -18,6 +18,16 @@
             ]
         },
         {
+            "name": "Call Tracking",
+            "description": "Call Tracking lines on multiple buildings in Ottawa.",
+            "quantity": 45,
+            "unit_cost": "$2.00",
+            "total": "$90.00",
+            "taxes": [
+                "GST"
+            ]
+        },
+        {
             "name": "Promoted Listings",
             "description": "Promoted Listing Advertisements on Zumper. Another description blurb.",
             "quantity": 2,
@@ -26,16 +36,6 @@
             "taxes": [
                 "GST",
                 "HST"
-            ]
-        },
-        {
-            "name": "Call Tracking",
-            "description": "Call Tracking lines on multiple buildings in Ottawa.",
-            "quantity": 45,
-            "unit_cost": "$2.00",
-            "total": "$90.00",
-            "taxes": [
-                "GST"
             ]
         }
     ],
@@ -54,6 +54,6 @@
     "total": "$488.89",
     "paid_amount": "$231.35",
     "due": "$257.54",
-    "notes": "These are some example notes.",
-    "terms": "These are some example terms."
+    "notes": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "terms": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
 }

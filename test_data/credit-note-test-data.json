@@ -1,0 +1,50 @@
+{
+    "address": "Florida Man<br>35 Coast Ridge Road<br>Palm Coast, Florida<br>42069<br>United States",
+    "credit_note_date": "6/12/2023",
+    "credit_note_number": "CN007",
+    "credits": [
+        {
+            "credit_number": "C008",
+            "description": "Credit for Premium Service",
+            "subscription_id": "1337",
+            "subtotal": "$100.70",
+            "tax_amount": "$13.09",
+            "total": "$113.79"
+        },
+        {
+            "credit_number": "C009",
+            "description": "Credit for return",
+            "subscription_id": "3837",
+            "subtotal": "$750.00",
+            "tax_amount": "$97.50",
+            "total": "$847.50"
+        },
+        {
+            "credit_number": "C010",
+            "description": "Credit for early cancelation",
+            "subscription_id": "8294",
+            "subtotal": "$87.70",
+            "tax_amount": "$11.40",
+            "total": "$99.10"
+        }
+    ],
+    "currency_code": "CAD",
+    "notes": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "subtotal": "$938.40",
+    "tax_amount": "$121.99",
+    "tax_name": "HST",
+    "tax_rate": "0.13",
+    "total": "$1060.39",
+    "comments": [
+        {
+            "note": "Client inquired about credit amount for C010 due to cancellation on 10th of month. Confirmed amount.",
+            "created_user_name": "Jennifer Lyle",
+            "created_timestamp": "6/15/2023"
+        },
+        {
+            "note": "Client requested address change.",
+            "created_user_name": "Brett Hatch",
+            "created_timestamp": "6/21/2023"
+        }
+    ]
+}

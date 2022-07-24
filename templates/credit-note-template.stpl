@@ -75,8 +75,7 @@
                     </td>
                     <td valign="top"
                         style="vertical-align:top; text-align: right;">
-                        <span class="header">Total Amount (<%= currency_code %>
-                                )</span><br>
+                        <span class="header">Total Amount (<%= currency_code %>)</span><br>
                         <span style="font-size: 24px;">
                             <%= total %>
                         </span>
