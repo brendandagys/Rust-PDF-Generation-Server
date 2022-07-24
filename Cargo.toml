@@ -9,6 +9,7 @@ edition = "2021"
 [dependencies]
 actix-web = "4"
 chrono = "0.4"
+#cloud-storage = "0.10"
 sailfish = "0.4.0"
 serde = { version = "1.0", features = ["derive"] }
 wkhtmltopdf = "0.4.0"
