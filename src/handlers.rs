@@ -1,20 +1,15 @@
 use crate::{
+    helpers::print_time,
     types::{credit_note, invoice},
     PdfApp,
 };
 use actix_web::{web, HttpResponse, Responder};
-use chrono::{DateTime, Utc};
+use chrono::Utc;
 use sailfish::TemplateOnce;
 
 pub enum Parameters<T> {
     InvoiceParameters(T),
     CreditNoteParameters(T),
-}
-
-fn print_time(suffix: &str) -> DateTime<Utc> {
-    let now = Utc::now();
-    println!("{} {} {suffix} ", now.date(), now.time());
-    now
 }
 
 pub async fn health() -> impl Responder {

@@ -2,6 +2,7 @@ use actix_web::{guard, web, App, HttpServer};
 use wkhtmltopdf::PdfApplication;
 
 mod handlers;
+mod helpers;
 mod types;
 
 pub struct PdfApp {

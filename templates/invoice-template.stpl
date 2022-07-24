@@ -22,6 +22,7 @@
 
       .header {
         color: rgb(86, 86, 138);
+        font-weight: 400;
       }
 
     </style>
